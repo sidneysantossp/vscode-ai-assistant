@@ -1,0 +1,171 @@
+{
+  "name": "vscode-ai-assistant",
+  "displayName": "AI Development Assistant",
+  "description": "Assistente de desenvolvimento com IA avançada para VSCode",
+  "version": "1.0.0",
+  "publisher": "ai-assistant",
+  "engines": {
+    "vscode": "^1.8.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Other"
+  ],
+  "keywords": [
+    "ai",
+    "assistant",
+    "development",
+    "productivity",
+    "automation"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:aiassistant.start",
+    "onCommand:aiassistant.analyze",
+    "onCommand:aiassistant.generate",
+    "onCommand:aiassistant.workflow",
+    "onCommand:aiassistant.insights",
+    "onCommand:aiassistant.learn"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "aiassistant.start",
+        "title": "Start AI Assistant",
+        "category": "AI Assistant"
+      },
+      {
+        "command": "aiassistant.analyze",
+        "title": "Analyze Code",
+        "category": "AI Assistant"
+      },
+      {
+        "command": "aiassistant.generate",
+        "title": "Generate Code",
+        "category": "AI Assistant"
+      },
+      {
+        "command": "aiassistant.workflow",
+        "title": "Open Workflow",
+        "category": "AI Assistant"
+      },
+      {
+        "command": "aiassistant.insights",
+        "title": "Show Insights",
+        "category": "AI Assistant"
+      },
+      {
+        "command": "aiassistant.learn",
+        "title": "Learning Path",
+        "category": "AI Assistant"
+      }
+    ],
+    "configuration": {
+      "title": "AI Assistant",
+      "properties": {
+        "aiassistant.theme": {
+          "type": "string",
+          "default": "auto",
+          "enum": ["light", "dark", "auto"],
+          "description": "Theme preference for the AI Assistant"
+        },
+        "aiassistant.assistanceLevel": {
+          "type": "string",
+          "default": "balanced",
+          "enum": ["minimal", "balanced", "proactive"],
+          "description": "Level of assistance provided by the AI"
+        },
+        "aiassistant.features": {
+          "type": "object",
+          "properties": {
+            "codeDNA": {
+              "type": "boolean",
+              "default": true,
+              "description": "Enable Code DNA analysis"
+            },
+            "pairProgramming": {
+              "type": "boolean",
+              "default": true,
+              "description": "Enable AI Pair Programming"
+            },
+            "knowledgeGraph": {
+              "type": "boolean",
+              "default": true,
+              "description": "Enable Knowledge Graph"
+            },
+            "smartAutomation": {
+              "type": "boolean",
+              "default": true,
+              "description": "Enable Smart Automation"
+            },
+            "developerGrowth": {
+              "type": "boolean",
+              "default": true,
+              "description": "Enable Developer Growth tracking"
+            }
+          }
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ai-assistant",
+          "title": "AI Assistant",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "ai-assistant": [
+        {
+          "id": "aiassistant.workflow",
+          "name": "Workflow"
+        },
+        {
+          "id": "aiassistant.insights",
+          "name": "Insights"
+        },
+        {
+          "id": "aiassistant.learning",
+          "name": "Learning Path"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "test-compile": "tsc -p ./",
+    "test-watch": "tsc -watch -p ./",
+    "pretest": "npm run test-compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "dependencies": {
+    "@types/vscode": "^1.8.0",
+    "openai": "^4.0.0",
+    "typescript": "^4.9.0",
+    "webpack": "^5.0.0",
+    "webpack-cli": "^4.0.0",
+    "@types/node": "14.x",
+    "axios": "^1.0.0",
+    "d3": "^7.0.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.2.2",
+    "eslint": "^7.27.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "glob": "^7.1.7",
+    "mocha": "^8.4.0",
+    "typescript": "^4.3.2",
+    "vscode-test": "^1.5.2"
+  }
+}
